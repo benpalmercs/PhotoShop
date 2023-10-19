@@ -4,19 +4,37 @@ Display
     BoxLayout:
         orientation: "vertical"
         GridLayout:
-            rows: 3
+            rows: 4
             size_hint: 1,0.3
+            BoxLayout:
+                orientation: "horizontal"
+                TextInput:
+                    id: image_file
+                    hint_text: "Image File"
+                TextInput:
+                    id: image_name
+                    hint_text: "Image Name"
             Button:
-                text: "Black and White"
+                text: "Load Image"
+                on_release: root.load_image(image_file.text)
             Button:
-                text: "Inverse"
+                text: "Mirror"
+                on_release: root.mirror(image_file.text,image_name.text)
+            Button:
+                text: "Mirror2"
+                on_release: root.mirror2(image_file.text,image_name.text)
+            Button:
+                text: "Invert"
+                on_release: root.invert(image_file.text,image_name.text)
             Button:
                 text: "Line Drawing"
-            Button:
-                text: "Pointilism"
+                on_release: root.line_drawing(image_file.text, image_name.text)
+
             Button:
                 text: "Sepia"
+                on_release: root.sepia(image_file.text,image_name.text)
             Button:
                 text: "Pixelate"
         Image:
             id: image
+            source: ""
